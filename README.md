@@ -4,9 +4,14 @@ React is a javascript library for building a reusable user interface(UI). React 
 
 2. Why choose to use React ?
 
-> fast
-> modular
-> scalabl
-> flexible
-> open source
+->fast
+
+-> modular
+
+-> scalability
+
+-> flexible
+
+-> open source
+
 
