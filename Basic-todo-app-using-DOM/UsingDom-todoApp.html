@@ -1,9 +1,6 @@
 <html>
     <head></head>
     <body>
-
-        
-
         <div>
             <input id="title" type="text" placeholder="title">
             <br></br>
@@ -13,7 +10,7 @@
 
             <div id="todos"></div>
         </div>
-
+        
 
         <script>
             // function addTodo() {
@@ -60,7 +57,6 @@
                 const title = document.getElementById("title").value;
                 const description = document.getElementById("description").value;
                 const parent = document.getElementById("todos");
-
                 parent.appendChild(createChild(title, description, globalId++));
             }
         </script>
