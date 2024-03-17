@@ -1,9 +1,9 @@
-import Chai from "./Chai";
+import MyButton from "./MyButton";
 
 function App() {
   return (
     <>
-      <Chai/>
+      <MyButton/>
 
       <h1>Hello react</h1>
     </>

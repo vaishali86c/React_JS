@@ -1,33 +1,43 @@
+import axios from "axios";
 import React, { Fragment } from "react"
+import { useEffect } from "react";
 import { useState } from "react";
 
+// learn usestate and useeffect
 
 function App() {
 
-  const [title, setTitle] = useState("my name is vaishali1");
+  const [selectedId, setSelectedId] = useState(1);
 
-  function updateTitle() {
-    setTitle("my name is " + Math.random());
-  }
-  return (
-    <div>
-      <button onClick={updateTitle}>Update the button</button>
-      <Header title={title}></Header>
-      <Header title="vaishali"></Header>
-      <Header title="vaishali"></Header>
-      <Header title="vaishali"></Header>
-      <Header title="vaishali"></Header>
-      <Header title="vaishali"></Header>
+    return <div>
+      <button onClick={() => setSelectedId(1)}>1</button>
+      <button onClick={() => setSelectedId(2)}>2</button>
+      <button onClick={() => setSelectedId(3)}>3</button>
 
+
+      <Todo id={selectedId} />
     </div>
-  )
 }
 
-const Header = React.memo(function Header({title}) {
+
+function Todo({id}) {
+  const [todo, setTodo] = useState({});
+
+  useEffect(() => {
+    axios.get("https://sum-server.100xdevs.com/todo?id=" + id)
+      .then(response => {
+        setTodo(response.data.todo)
+      })
+  }, [id])
+
   return <div>
-    {title}
+    Id: {id}
+    <h1>
+      {todo.title}
+    </h1>
+    <h4>
+      {todo.description}
+    </h4>
   </div>
-})
-
-
+}
 export default App

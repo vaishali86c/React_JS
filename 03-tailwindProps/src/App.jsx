@@ -1,14 +1,33 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import axios from "axios"
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  return <div>
 
-  return (
-    <h1 className='bg-green-400 text-black'>Tailwind css</h1>
-  )
+  </div>
+}
+
+function Todo({id}) {
+  const [todo, setTodo] = useState({});
+
+  useEffect(() => {
+    axios.get("https://sum-server.100xdevs.com/todo?id=" + id)
+      .then(response => {
+        setTodo(response.data.todo)
+      })
+  }, [])
+
+  return <div>
+    <h1>
+      {todo.title}
+    </h1>
+    <h4>
+      {todo.description}
+    </h4>
+  </div>
 }
 
 export default App
