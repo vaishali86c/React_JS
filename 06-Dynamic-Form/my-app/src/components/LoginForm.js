@@ -1,6 +1,7 @@
 import { Button, Input } from "@chakra-ui/react";
 import "../styles/LoginForm.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
 
@@ -10,8 +11,7 @@ const LoginForm = () => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-
-  
+  const navigate = useNavigate();
 
   let addSkill = () => {
     setFormValues([...formValues, { skill1: "", skill2: "", skill3: "" }]);
@@ -35,12 +35,13 @@ const LoginForm = () => {
         email,
         skills: formValues,
     };
-    console.log(JSON.stringify(formData)); 
-  };
+    
+    localStorage.setItem("formData", JSON.stringify(formData));
+    navigate('/display');
+  }; 
  
   return (
     <form className="form" onSubmit={handleSubmit}>
-      {/* <h1>Form</h1> */}
       <div className="section-fields">
         <Input 
             id="Name" value={name} 
