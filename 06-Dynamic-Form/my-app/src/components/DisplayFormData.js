@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect, useContext} from "react";
 import { Button, Input } from "@chakra-ui/react";
-
+import { FormContext } from "../FormContext";
 
 const DisplayFormData = () => {
-    const [formData, setFormData] = useState(null);
+    // const [formData, setFormData] = useState(null);
+    const { formData, setFormData } = useContext(FormContext);
     const [IseditData, setEditData] = useState(false);
 
     useEffect(() => {
@@ -44,6 +45,7 @@ const DisplayFormData = () => {
         localStorage.setItem("formData", JSON.stringify(formData));
         setEditData(false);
     }
+
 
     return (
         <div>

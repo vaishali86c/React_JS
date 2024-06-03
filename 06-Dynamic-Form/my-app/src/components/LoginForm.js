@@ -1,13 +1,17 @@
 import { Button, Input } from "@chakra-ui/react";
 import "../styles/LoginForm.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FormContext } from "../FormContext";
 
 const LoginForm = () => {
 
-  const [formValues, setFormValues] = useState([
-    { skill1: "", skill2: "", skill3: "" },
-  ]);
+  // formValues, setFormValues
+
+    const { setFormData } = useContext(FormContext);
+    const [formValues, setFormValues] = useState([  
+        { skill1: "", skill2: "", skill3: "" },
+      ]);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -36,7 +40,8 @@ const LoginForm = () => {
         skills: formValues,
     };
     
-    localStorage.setItem("formData", JSON.stringify(formData));
+    // localStorage.setItem("formData", JSON.stringify(formData));
+    setFormData(formData);
     navigate('/display');
   }; 
  
@@ -44,9 +49,10 @@ const LoginForm = () => {
     <form className="form" onSubmit={handleSubmit}>
       <div className="section-fields">
         <Input 
-            id="Name" value={name} 
+            id="Name"
             className="Name" 
             placeholder="Name" 
+            value={name} 
             onChange={(e) => setName(e.target.value)} 
         />
         <Input 
