@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 function RegisterForm() {
 
@@ -36,6 +37,7 @@ function RegisterForm() {
                 console.error('Error:', error.response.data || error.message);
         };
     }
+    const navigate = useNavigate();
 
     return (
         <form onSubmit={handleSubmit}>
@@ -91,8 +93,13 @@ function RegisterForm() {
                 value={formData.date_of_birth}
                 onChange={handleChange}
                 />
-      </div>
-      <button type="submit">Register</button>
+            </div>
+            <button type="submit">Sign Up</button>
+            <br />
+            <div>
+                <h4>Already have an account?</h4>
+                <button onClick={() => navigate("/login")}>Login Here</button>
+            </div>
     </form>
     );
 }

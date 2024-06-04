@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
 
@@ -32,6 +33,8 @@ function LoginForm() {
         }
     };
 
+    const navigate = useNavigate();
+
     return (
         <form onSubmit={handleSubmit}>
             <h2>Login Form</h2>
@@ -56,6 +59,8 @@ function LoginForm() {
                 />
             </div>
             <button type="submit">Login</button>
+            <br />
+            <button onClick={() => navigate("/signup")}>Register Here</button>
         </form>
     );
 }
