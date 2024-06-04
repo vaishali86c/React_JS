@@ -1,0 +1,16 @@
+.login-form {
+
+    position: absolute;
+    top: 30%;
+    left: 30%;
+
+    display: flex;
+    flex-direction: column;
+    /* align-items: center;  */
+    padding: 2rem;
+    margin-top: 5%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    gap: 20px;
+}
+  
